@@ -12,11 +12,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="NumArray.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="NumArray.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/NumArray.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="87">
-              <caret line="3" column="17" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
+            <state>
+              <caret selection-end-line="4" selection-end-column="3" />
               <folding>
                 <element signature="class#Merger#0;class#NumArray#0" />
                 <element signature="class#SegmentTree#0;class#NumArray#0" />
@@ -31,11 +31,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NumArray2.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="NumArray2.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/NumArray2.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="145">
-              <caret line="5" column="24" lean-forward="true" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
+              <caret line="5" column="12" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
               <folding>
                 <element signature="e#370#371#0" expanded="true" />
                 <element signature="e#412#413#0" expanded="true" />
@@ -70,7 +70,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="281" />
     <option name="y" value="-22" />
     <option name="width" value="974" />
@@ -93,6 +93,12 @@
               <item name="303_Range_Sum_Query_Immutable" type="b2602c69:ProjectViewProjectNode" />
               <item name="303_Range_Sum_Query_Immutable" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="303_Range_Sum_Query_Immutable" type="b2602c69:ProjectViewProjectNode" />
+              <item name="303_Range_Sum_Query_Immutable" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="NumArray" type="1a9f42e2:ClassTreeNode" />
             </path>
           </expand>
           <select />
@@ -184,12 +190,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1532509685614</updated>
-      <workItem from="1532509688394" duration="1841000" />
+      <workItem from="1532509688394" duration="3318000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1841000" />
+    <option name="totallyTimeSpent" value="3318000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1296" height="1000" extended-state="6" />
@@ -244,10 +250,21 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/NumArray2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="145">
+          <caret line="5" column="12" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
+          <folding>
+            <element signature="e#370#371#0" expanded="true" />
+            <element signature="e#412#413#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/NumArray.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="87">
-          <caret line="3" column="17" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
+        <state>
+          <caret selection-end-line="4" selection-end-column="3" />
           <folding>
             <element signature="class#Merger#0;class#NumArray#0" />
             <element signature="class#SegmentTree#0;class#NumArray#0" />
@@ -257,17 +274,6 @@
             <element signature="e#1629#1630#0" expanded="true" />
             <element signature="e#1720#1721#0" expanded="true" />
             <element signature="e#1764#1765#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/NumArray2.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="145">
-          <caret line="5" column="24" lean-forward="true" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
-          <folding>
-            <element signature="e#370#371#0" expanded="true" />
-            <element signature="e#412#413#0" expanded="true" />
           </folding>
         </state>
       </provider>
