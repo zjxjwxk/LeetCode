@@ -34,9 +34,7 @@ class Trie {
             }
             cur = cur.next.get(c);
         }
-        if (!cur.isWord) {
-            cur.isWord = true;
-        }
+        cur.isWord = true;
     }
 
     /** Returns if the word is in the trie. */
