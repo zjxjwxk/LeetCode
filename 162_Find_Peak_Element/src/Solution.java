@@ -7,7 +7,7 @@ public class Solution {
             int mid = start + (end - start) / 2;
             if (nums[mid + 1] > nums[mid]) {
                 start = mid + 1;
-            } else if (nums[mid - 1] > nums[mid]) {
+            } else if (nums[mid + 1] < nums[mid]) {
                 end = mid;
             }
         }
@@ -15,7 +15,7 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        int[] num = {5, 4, 6, 8, 10, 1, 2, 7};
+        int[] num = {1, 2, 3, 1};
         System.out.println(findPeakElement(num));
     }
 }
