@@ -1,6 +1,5 @@
 package com.zjxjwxk.leetcode._035_Search_Insert_Position;
 
-import com.zjxjwxk.leetcode._003_Longest_Substring_Without_Repeating_Characters.Solution;
 
 /**
  * 二分搜索
@@ -11,9 +10,9 @@ public class Solution2 {
     public int searchInsert(int[] nums, int target) {
         int len = nums.length;
         int left = 0;
-        int right = len;
-        int mid = (left + right) / 2;
+        int right = len - 1;
         while (left <= right) {
+            int mid = (left + right) / 2;
             if (target < nums[mid]) {
                 right = mid - 1;
             } else if (target > nums[mid]) {
