@@ -1,17 +1,17 @@
 package com.zjxjwxk.leetcode._100_Same_Tree;
 
+class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+    TreeNode(int x) { val = x; }
+}
+
 /**
  * 递归（前序遍历）
  * @author zjxjwxk
  */
 public class Solution {
-
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-        TreeNode(int x) { val = x; }
-    }
 
     public boolean isSameTree(TreeNode p, TreeNode q) {
         if (p == null && q == null) {
