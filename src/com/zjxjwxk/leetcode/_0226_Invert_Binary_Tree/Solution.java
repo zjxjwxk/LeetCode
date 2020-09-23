@@ -10,10 +10,10 @@ public class Solution {
         if (root == null) {
             return null;
         }
-        TreeNode node = new TreeNode(root.val);
-        node.left = invertTree(root.right);
-        node.right = invertTree(root.left);
-        return node;
+        TreeNode temp = root.left;
+        root.left = invertTree(root.right);
+        root.right = invertTree(temp);
+        return root;
     }
 
     /**
