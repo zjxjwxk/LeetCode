@@ -8,54 +8,66 @@ import java.util.*;
  */
 public class Solution {
 
-    List<Integer> temp = new ArrayList<>(4);
-
     public List<List<Integer>> fourSum(int[] nums, int target) {
         Arrays.sort(nums);
         int len = nums.length, sum = 0;
-        Set<List<Integer>> set = new HashSet<>();
+        List<List<Integer>> result = new ArrayList<>();
         for (int i = 0; i < len - 3; ++i) {
-            temp.add(nums[i]);
             sum += nums[i];
-            if (ifContinue(nums, sum, i + 1, target)) {
-                for (int j = i + 1; j < len - 2; ++j) {
-                    temp.add(nums[j]);
-                    sum += nums[j];
-                    if (ifContinue(nums, sum, j + 1, target)) {
-                        for (int k = j + 1; k < len - 1; ++k) {
-                            temp.add(nums[k]);
-                            sum += nums[k];
-                            if (ifContinue(nums, sum, k + 1, target)) {
-                                int t = findTarget(nums, k + 1, len - 1, target - nums[i] - nums[j] - nums[k]);
-                                if (t != -1) {
-                                    temp.add(nums[t]);
-                                    set.add(new ArrayList<>(temp));
-                                    temp.remove(3);
-                                }
-                            }
-                            temp.remove(2);
-                            sum -= nums[k];
-                        }
-                    }
-                    temp.remove(1);
-                    sum -= nums[j];
-                }
+            if (i > 0 && nums[i] == nums[i - 1] || ifContinue(nums, sum, 1, target)) {
+                sum -= nums[i];
+                continue;
             }
-            temp.remove(0);
+            if (ifBreak(nums, sum, 1, i + 1, target)) {
+                break;
+            }
+            for (int j = i + 1; j < len - 2; ++j) {
+                sum += nums[j];
+                if (j > i + 1 && nums[j] == nums[j - 1] || ifContinue(nums, sum, 2, target)) {
+                    sum -= nums[j];
+                    continue;
+                }
+                if (ifBreak(nums, sum, 2, j + 1, target)) {
+                    sum -= nums[j];
+                    break;
+                }
+                for (int k = j + 1; k < len - 1; ++k) {
+                    sum += nums[k];
+                    if (k > j + 1 && nums[k] == nums[k - 1] || ifContinue(nums, sum, 3, target)) {
+                        sum -= nums[k];
+                        continue;
+                    }
+                    if (ifBreak(nums, sum, 3, k + 1, target)) {
+                        sum -= nums[k];
+                        break;
+                    }
+                    int t = findTarget(nums, k + 1, len - 1, target - sum);
+                    if (t != -1) {
+                        result.add(Arrays.asList(nums[i], nums[j], nums[k], nums[t]));
+                    }
+                    sum -= nums[k];
+                }
+                sum -= nums[j];
+            }
             sum -= nums[i];
         }
-        return new ArrayList<>(set);
+        return result;
     }
 
-    private boolean ifContinue(int[] nums, int sum, int startIndex, int target) {
-        int count = 4 - temp.size(), min = 0, max = 0;
-        for (int i = startIndex; i < startIndex + count; ++i) {
-            min += nums[i];
-        }
+    private boolean ifContinue(int[] nums, int sum, int level, int target) {
+        int count = 4 - level, max = 0;
         for (int i = nums.length - count; i < nums.length; ++i) {
             max += nums[i];
         }
-        return max >= (target - sum)  && min <= (target - sum);
+        return sum + max < target;
+    }
+
+    private boolean ifBreak(int[] nums, int sum, int level, int startIndex, int target) {
+        int count = 4 - level, min = 0;
+        for (int i = startIndex; i < startIndex + count; ++i) {
+            min += nums[i];
+        }
+        return sum + min > target;
     }
 
     private int findTarget(int[] nums, int start, int end, int target) {
@@ -75,7 +87,8 @@ public class Solution {
 
     public static void main(String[] args) {
         Solution solution = new Solution();
-        List<List<Integer>> result = solution.fourSum(new int[]{1, 0, -1, 0, -2, 2}, 0);
+//        List<List<Integer>> result = solution.fourSum(new int[]{1, 0, -1, 0, -2, 2}, 0);
+        List<List<Integer>> result = solution.fourSum(new int[]{0, 4, -5, 2, -2, 4, 2, -1, 4}, 12);
         for (List<Integer> list : result) {
             for (Integer num : list) {
                 System.out.print(num + " ");
