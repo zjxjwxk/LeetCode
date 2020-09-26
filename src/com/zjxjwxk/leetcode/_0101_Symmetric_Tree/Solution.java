@@ -8,7 +8,7 @@ class TreeNode {
 }
 
 /**
- * 广度优先遍历（递归）
+ * 深度优先遍历（递归）
  * @author zjxjwxk
  */
 public class Solution {
