@@ -4,6 +4,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 /**
+ * 利用队列BFS
  * @author zjxjwxk
  * @date 2020/9/28 11:53 上午
  */
