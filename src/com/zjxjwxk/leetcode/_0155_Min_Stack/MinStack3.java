@@ -8,31 +8,31 @@ package com.zjxjwxk.leetcode._0155_Min_Stack;
 public class MinStack3 {
 
     int[] stack;
-    int count = -1;
+    int index = -1;
 
     public MinStack3() {
         stack = new int[40000];
     }
 
     public void push(int x) {
-        stack[++count] = x;
-        if (count == 0) {
-            stack[++count] = x;
+        stack[++index] = x;
+        if (index == 0) {
+            stack[++index] = x;
         } else {
-            stack[count + 1] = Math.min(x, stack[count - 1]);
-            ++count;
+            stack[index + 1] = Math.min(x, stack[index - 1]);
+            ++index;
         }
     }
 
     public void pop() {
-        count -= 2;
+        index -= 2;
     }
 
     public int top() {
-        return stack[count - 1];
+        return stack[index - 1];
     }
 
     public int getMin() {
-        return stack[count];
+        return stack[index];
     }
 }

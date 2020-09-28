@@ -8,7 +8,7 @@ package com.zjxjwxk.leetcode._0155_Min_Stack;
 public class MinStack {
 
     int[] stack, min;
-    int count = -1;
+    int index = -1;
 
     public MinStack() {
         stack = new int[20000];
@@ -16,23 +16,23 @@ public class MinStack {
     }
 
     public void push(int x) {
-        if (count == -1) {
-            min[0] = x;
+        if (index == -1 || x < min[index]) {
+            min[index + 1] = x;
         } else {
-            min[count + 1] = Math.min(x, min[count]);
+            min[index + 1] = min[index];
         }
-        stack[++count] = x;
+        stack[++index] = x;
     }
 
     public void pop() {
-        --count;
+        --index;
     }
 
     public int top() {
-        return stack[count];
+        return stack[index];
     }
 
     public int getMin() {
-        return min[count];
+        return min[index];
     }
 }
