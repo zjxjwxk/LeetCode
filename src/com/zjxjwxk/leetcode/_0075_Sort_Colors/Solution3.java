@@ -1,7 +1,7 @@
 package com.zjxjwxk.leetcode._0075_Sort_Colors;
 
 /**
- * 双指针
+ * 双指针（0和1左移）
  * @author zjxjwxk
  * @date 2020/10/7 11:27 上午
  */
