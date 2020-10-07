@@ -8,26 +8,26 @@ package com.zjxjwxk.leetcode._0075_Sort_Colors;
 public class Solution3 {
 
     public void sortColors(int[] nums) {
-        int p1 = 0, p2 = 0, len = nums.length;
+        int p0 = 0, p1 = 0, len = nums.length;
         for (int i = 0; i < len; ++i) {
             if (nums[i] == 1) {
-                swap(nums, p2, i);
-                ++p2;
+                swap(nums, p1, i);
+                ++p1;
             }
             if (nums[i] == 0) {
-                swap(nums, p1, i);
-                if (p1 < p2) {
-                    swap(nums, p2, i);
+                swap(nums, p0, i);
+                if (p0 < p1) {
+                    swap(nums, p1, i);
                 }
+                ++p0;
                 ++p1;
-                ++p2;
             }
         }
     }
 
-    private void swap(int[] nums, int p1, int p2) {
-        int temp = nums[p1];
-        nums[p1] = nums[p2];
-        nums[p2] = temp;
+    private void swap(int[] nums, int index1, int index2) {
+        int temp = nums[index1];
+        nums[index1] = nums[index2];
+        nums[index2] = temp;
     }
 }
