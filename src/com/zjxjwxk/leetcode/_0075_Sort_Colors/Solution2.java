@@ -8,7 +8,7 @@ package com.zjxjwxk.leetcode._0075_Sort_Colors;
 public class Solution2 {
 
     public void sortColors(int[] nums) {
-        int p = 0, len = nums.length, temp;
+        int p = 0, len = nums.length;
         for (int i = 0; i < len; ++i) {
             if (nums[i] == 0) {
                 swap(nums, p, i);
