@@ -11,19 +11,21 @@ public class Solution2 {
         int p = 0, len = nums.length, temp;
         for (int i = 0; i < len; ++i) {
             if (nums[i] == 0) {
-                temp = nums[p];
-                nums[p] = nums[i];
-                nums[i] = temp;
+                swap(nums, p, i);
                 ++p;
             }
         }
         for (int i = p; i < len; ++i) {
             if (nums[i] == 1) {
-                temp = nums[p];
-                nums[p] = nums[i];
-                nums[i] = temp;
+                swap(nums, p, i);
                 ++p;
             }
         }
+    }
+
+    private void swap(int[] nums, int p1, int p2) {
+        int temp = nums[p1];
+        nums[p1] = nums[p2];
+        nums[p2] = temp;
     }
 }
