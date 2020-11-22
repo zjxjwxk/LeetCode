@@ -23,11 +23,6 @@ public class Solution {
                 --hashTable[index];
             }
         }
-        for (int i = 0; i < 26; ++i) {
-            if (hashTable[i] != 0) {
-                return false;
-            }
-        }
         return true;
     }
 }
