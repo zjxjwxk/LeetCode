@@ -3,6 +3,7 @@ package com.zjxjwxk.leetcode.util;
 import java.util.Objects;
 
 /**
+ * 二叉树节点
  * @author Xinkang Wu
  * @date 2020/10/27 10:38 上午
  */

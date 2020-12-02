@@ -4,6 +4,7 @@ import java.util.Deque;
 import java.util.LinkedList;
 
 /**
+ * 数据结构工厂类
  * @author zjxjwxk
  * @date 2020/10/13 9:11 上午
  */

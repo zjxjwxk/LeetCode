@@ -3,6 +3,7 @@ package com.zjxjwxk.leetcode.util;
 import java.util.Objects;
 
 /**
+ * 链表节点
  * @author zjxjwxk
  * @date 2020/10/13 9:16 上午
  */
