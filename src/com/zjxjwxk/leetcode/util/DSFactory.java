@@ -1,9 +1,6 @@
 package com.zjxjwxk.leetcode.util;
 
-import java.util.ArrayList;
-import java.util.Deque;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 /**
  * 数据结构工厂类
@@ -12,13 +9,10 @@ import java.util.List;
  */
 public class DSFactory {
 
-    public static List<List<Integer>> newArrayList(int[][] arr) {
-        List<List<Integer>> arrayList = new ArrayList<>();
-        for (int[] arr1 : arr) {
-            List<Integer> list = new ArrayList<>();
-            for (int num : arr1) {
-                list.add(num);
-            }
+    public static <T> List<List<T>> newArrayList(T[][] arr) {
+        List<List<T>> arrayList = new ArrayList<>();
+        for (T[] arr1 : arr) {
+            List<T> list = new ArrayList<>(Arrays.asList(arr1));
             arrayList.add(list);
         }
         return arrayList;

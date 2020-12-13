@@ -12,7 +12,7 @@ class SolutionTest {
     @Test
     void generate() {
         int numRows = 5;
-        int[][] ans = {
+        Integer[][] ans = {
                 {1},
                 {1, 1},
                 {1, 2, 1},
