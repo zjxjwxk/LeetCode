@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 哈希
+ * 双哈希表
  * @author Xinkang Wu
  * @date 2020/12/16 09:53
  */
