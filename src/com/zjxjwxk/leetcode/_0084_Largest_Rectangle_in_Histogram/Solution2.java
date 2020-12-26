@@ -1,6 +1,7 @@
 package com.zjxjwxk.leetcode._0084_Largest_Rectangle_in_Histogram;
 
-import java.util.Stack;
+import java.util.ArrayDeque;
+import java.util.Deque;
 
 /**
  * 单调栈
@@ -14,7 +15,7 @@ public class Solution2 {
             return 0;
         }
         int len = heights.length, ans = 0;
-        Stack<Integer> stack = new Stack<>();
+        Deque<Integer> stack = new ArrayDeque<>();
         int[] left = new int[len], right = new int[len];
         for (int i = 0; i < len; ++i) {
             while (!stack.isEmpty() && heights[i] <= heights[stack.peek()]) {
