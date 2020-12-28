@@ -24,8 +24,8 @@ public class Solution2 {
         }
         return Math.max(
                 Math.max(
-                        Math.max(dp[len - 1][0][0], dp[len - 1][0][1]),
-                        Math.max(dp[len - 1][1][0], dp[len - 1][1][1])
+                        dp[len - 1][0][0],
+                        dp[len - 1][1][0]
                 ),
                 dp[len - 1][2][0]
         );
