@@ -11,7 +11,7 @@ public class DSUtil {
      * 打印int类型数组
      * @param arr int数组
      */
-    public static void printIntArr(int[] arr) {
+    public static <T> void printArr(T[] arr) {
         System.out.print('[');
         for (int i = 0; i < arr.length; ++i) {
             if (i != 0) {
