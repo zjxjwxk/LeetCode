@@ -30,13 +30,9 @@ public class MedianFinder {
         }
         int difference = maxHeap.size() - minHeap.size();
         if (difference > 1) {
-            while (difference-- > 1) {
-                minHeap.add(maxHeap.poll());
-            }
+            minHeap.add(maxHeap.poll());
         } else if (difference < 0) {
-            while (difference++ < 0) {
-                maxHeap.add(minHeap.poll());
-            }
+            maxHeap.add(minHeap.poll());
         }
     }
 
