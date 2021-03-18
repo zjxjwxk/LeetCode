@@ -50,4 +50,16 @@ public class DSFactory {
         }
         return root;
     }
+
+    public static ListNode newListNode(int[] arr) {
+        if (arr.length == 0) {
+            return null;
+        }
+        ListNode dummyHead = new ListNode(), p = dummyHead;
+        for (int num : arr) {
+            p.next = new ListNode(num);
+            p = p.next;
+        }
+        return dummyHead.next;
+    }
 }
