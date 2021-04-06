@@ -15,6 +15,11 @@ public class DSUtil {
         printArrByLength(arr, arr.length);
     }
 
+    /**
+     * 根据长度，打印int类型数组
+     * @param arr int数组
+     * @param length 打印长度，从0下标开始
+     */
     public static <T> void printArrByLength(T[] arr, int length) {
         System.out.print('[');
         for (int i = 0; i < length; ++i) {
