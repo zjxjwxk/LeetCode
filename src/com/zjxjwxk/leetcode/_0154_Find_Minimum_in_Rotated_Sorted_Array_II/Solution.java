@@ -1,46 +1,25 @@
 package com.zjxjwxk.leetcode._0154_Find_Minimum_in_Rotated_Sorted_Array_II;
 
 /**
- * @author zjxjwxk
- * @date 2020/8/5 10:54 下午
+ * 二分查找
+ * @author Xinkang Wu
+ * @date 2021/4/10 22:50
  */
 public class Solution {
 
-    public static int findMin(int[] numbers) {
-        if (numbers == null || numbers.length == 0) {
-            return -1;
-        }
-        int left = 0, right = numbers.length - 1, mid = left;
-        while (numbers[left] >= numbers[right]) {
-            if (right - left == 1) {
-                mid = right;
-                break;
-            }
+    public int findMin(int[] numbers) {
+        int left = 0, right = numbers.length - 1, mid;
+        while (left < right) {
             mid = left + ((right - left) >> 1);
-            if (numbers[left] == numbers[right] && numbers[mid] == numbers[left]) {
-                return minInOrder(numbers, left, right);
+            while (right != mid && numbers[mid] == numbers[right]) {
+                --right;
             }
-            if (numbers[mid] >= numbers[left]) {
-                left = mid;
-            } else if (numbers[mid] <= numbers[right]) {
+            if (numbers[mid] <= numbers[right]) {
                 right = mid;
+            } else {
+                left = mid + 1;
             }
         }
-        return numbers[mid];
-    }
-
-    public static int minInOrder(int[] numbers, int left, int right) {
-        int min = numbers[left];
-        for (int i = left + 1; i <= right; ++i) {
-            if (numbers[i] < min) {
-                min = numbers[i];
-            }
-        }
-        return min;
-    }
-
-    public static void main(String[] args) {
-        System.out.println(findMin(new int[]{1, 0, 1, 1, 1}));
-        System.out.println(findMin(new int[]{1, 1, 1, 0, 1}));
+        return numbers[left];
     }
 }
