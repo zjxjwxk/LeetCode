@@ -1,43 +1,37 @@
 package com.zjxjwxk.leetcode._0208_Implement_Trie__Prefix_Tree__;
 
+import java.util.Map;
 import java.util.TreeMap;
 
 /**
+ * Map实现
  * @author zjxjwxk
  */
 public class Trie {
 
-    private class Node {
-
-        public boolean isWord;
-        public TreeMap<Character, Node> next;
-
-        public Node(boolean isWord) {
-            this.isWord = isWord;
-            next = new TreeMap<>();
-        }
+    static class Node {
+        boolean isWord;
+        Map<Character, Node> childMap;
 
         public Node() {
-            this(false);
+            this.isWord = false;
+            this.childMap = new TreeMap<>();
         }
     }
 
-    private Node root;
+    private final Node root;
 
     /** Initialize your data structure here. */
     public Trie() {
-        root = new Node();
+        this.root = new Node();
     }
 
     /** Inserts a word into the trie. */
     public void insert(String word) {
         Node cur = root;
-        for (int i = 0; i < word.length(); i++) {
-            char c = word.charAt(i);
-            if (cur.next.get(c) == null) {
-                cur.next.put(c, new Node());
-            }
-            cur = cur.next.get(c);
+        for (char ch : word.toCharArray()) {
+            cur.childMap.putIfAbsent(ch, new Node());
+            cur = cur.childMap.get(ch);
         }
         cur.isWord = true;
     }
@@ -45,12 +39,12 @@ public class Trie {
     /** Returns if the word is in the trie. */
     public boolean search(String word) {
         Node cur = root;
-        for (int i = 0; i < word.length(); i++) {
-            char c = word.charAt(i);
-            if (cur.next.get(c) == null) {
+        for (char ch : word.toCharArray()) {
+            Node next = cur.childMap.get(ch);
+            if (next == null) {
                 return false;
             }
-            cur = cur.next.get(c);
+            cur = next;
         }
         return cur.isWord;
     }
@@ -58,21 +52,13 @@ public class Trie {
     /** Returns if there is any word in the trie that starts with the given prefix. */
     public boolean startsWith(String prefix) {
         Node cur = root;
-        for (int i = 0; i < prefix.length(); i++) {
-            char c = prefix.charAt(i);
-            if (cur.next.get(c) == null) {
+        for (char ch : prefix.toCharArray()) {
+            Node next = cur.childMap.get(ch);
+            if (next == null) {
                 return false;
             }
-            cur = cur.next.get(c);
+            cur = next;
         }
         return true;
     }
 }
-
-/**
- * Your Trie object will be instantiated and called as such:
- * Trie obj = new Trie();
- * obj.insert(word);
- * boolean param_2 = obj.search(word);
- * boolean param_3 = obj.startsWith(prefix);
- */
