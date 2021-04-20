@@ -1,42 +1,33 @@
 package com.zjxjwxk.leetcode._0028_Implement_strStr;
 
 /**
- * 暴力匹配算法
  * @author zjxjwxk
  */
 public class Solution {
 
     public int strStr(String haystack, String needle) {
-        int len1 = haystack.length();
-        int len2 = needle.length();
+        int len1 = haystack.length(), len2 = needle.length();
+        char[] chArr1 = haystack.toCharArray(), chArr2 = needle.toCharArray();
         if (len2 == 0) {
             return 0;
         }
-        if (len1 < len2) {
+        if (len2 > len1) {
             return -1;
         }
-        for (int i = 0; i < len1; i++) {
+        for (int i = 0; i < len1; ++i) {
             if (i + len2 > len1) {
                 return -1;
             }
-            for (int j = 0; j < len2; j++) {
-                if (haystack.charAt(i + j) == needle.charAt(j)) {
-                    if (j == len2 - 1) {
-                        return i;
-                    }
-                } else {
+            int j;
+            for (j = 0; j < len2; ++j) {
+                if (chArr2[j] != chArr1[i + j]) {
                     break;
                 }
             }
+            if (j == len2) {
+                return i;
+            }
         }
         return -1;
-    }
-
-    public static void main(String[] args) {
-        String haystack = "hello";
-        String needle = "ll";
-        Solution solution = new Solution();
-        int i = solution.strStr(haystack, needle);
-        System.out.println("Index : " + i);
     }
 }
