@@ -1,6 +1,7 @@
 package com.zjxjwxk.leetcode._1011_Capacity_To_Ship_Packages_Within_D_Days;
 
 /**
+ * 二分查找
  * @author Xinkang Wu
  * @date 2021/4/26 23:32
  */
