@@ -1,32 +1,22 @@
 package com.zjxjwxk.leetcode._0007_Reverse_Integer;
 
 /**
+ * 数学
+ *
  * @author zjxjwxk
  */
 public class Solution {
+
     public int reverse(int x) {
-        int rev = 0;
-        while(x != 0){
-            int pop = x % 10;
+        int ans = 0;
+        while (x != 0) {
+            int remain = x % 10;
             x /= 10;
-
-            if(rev > Integer.MAX_VALUE / 10 || (rev == Integer.MAX_VALUE / 10 && pop > 7)){
+            if (ans > Integer.MAX_VALUE / 10 || ans < Integer.MIN_VALUE / 10) {
                 return 0;
             }
-            if(rev < Integer.MIN_VALUE / 10 || (rev == Integer.MIN_VALUE / 10 && pop < -8)){
-                return 0;
-            }
-
-            rev = rev * 10 + pop;
+            ans = ans * 10 + remain;
         }
-
-        return rev;
-    }
-
-    public static void main(String[] args) {
-        int input = 2147483647;
-        Solution solution = new Solution();
-        System.out.println("Input:" + input);
-        System.out.println("Output:" + solution.reverse(input));
+        return ans;
     }
 }
