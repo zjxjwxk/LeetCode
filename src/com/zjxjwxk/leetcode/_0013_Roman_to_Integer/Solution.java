@@ -4,11 +4,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * 模拟
  * @author zjxjwxk
  */
 public class Solution {
 
-    public static int romanToInt(String s) {
+    public int romanToInt(String s) {
         Map<Character, Integer> map = new HashMap<>();
         map.put('I', 1);
         map.put('V', 5);
@@ -17,19 +18,17 @@ public class Solution {
         map.put('C', 100);
         map.put('D', 500);
         map.put('M', 1000);
-        int length = s.length();
-        int sum = map.get(s.charAt(length - 1));
-        for (int i = length - 2; i >= 0; i--) {
-            if (map.get(s.charAt(i)) < map.get(s.charAt(i + 1))) {
-                sum -= map.get(s.charAt(i));
+        char[] chars = s.toCharArray();
+        int len = chars.length, ans = 0, cur = map.get(chars[0]);
+        for (int i = 0; i < len - 1; ++i) {
+            int next = map.get(chars[i + 1]);
+            if (cur < next) {
+                ans -= cur;
             } else {
-                sum += map.get(s.charAt(i));
+                ans += cur;
             }
+            cur = next;
         }
-        return sum;
-    }
-
-    public static void main(String[] args) {
-        System.out.println(romanToInt("MCMXCIV"));
+        return ans + cur;
     }
 }
