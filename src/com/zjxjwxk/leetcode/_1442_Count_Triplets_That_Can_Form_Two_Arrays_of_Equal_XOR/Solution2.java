@@ -11,19 +11,16 @@ import java.util.Map;
 public class Solution2 {
 
     public int countTriplets(int[] arr) {
-        int len = arr.length, ans = 0;
+        int len = arr.length, ans = 0, s = 0;
         Map<Integer, Integer> countMap = new HashMap<>();
         Map<Integer, Integer> sumMap = new HashMap<>();
-        int[] s = new int[len + 1];
-        for (int i = 1; i <= len; ++i) {
-            s[i] = s[i - 1] ^ arr[i - 1];
-        }
         for (int k = 0; k < len; ++k) {
-            if (countMap.containsKey(s[k + 1])) {
-                ans += countMap.get(s[k + 1]) * k - sumMap.get(s[k + 1]);
+            if (countMap.containsKey(s ^ arr[k])) {
+                ans += countMap.get(s ^ arr[k]) * k - sumMap.get(s ^ arr[k]);
             }
-            countMap.merge(s[k], 1, Integer::sum);
-            sumMap.merge(s[k], k, Integer::sum);
+            countMap.merge(s, 1, Integer::sum);
+            sumMap.merge(s, k, Integer::sum);
+            s ^= arr[k];
         }
         return ans;
     }
