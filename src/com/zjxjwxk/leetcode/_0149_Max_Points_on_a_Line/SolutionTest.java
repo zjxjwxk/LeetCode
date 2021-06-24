@@ -35,4 +35,11 @@ class SolutionTest {
         int ans = 3;
         assertEquals(ans, solution.maxPoints(points));
     }
+
+    @Test
+    void maxPoints5() {
+        int[][] points = {{2, 3}, {3, 3}, {-5, 3}};
+        int ans = 3;
+        assertEquals(ans, solution.maxPoints(points));
+    }
 }
