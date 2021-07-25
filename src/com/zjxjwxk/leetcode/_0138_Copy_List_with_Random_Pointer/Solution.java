@@ -1,6 +1,7 @@
 package com.zjxjwxk.leetcode._0138_Copy_List_with_Random_Pointer;
 
 /**
+ * 迭代 + 节点拆分
  * @author zjxjwxk
  * @date 2020/10/9 10:18 下午
  */
@@ -34,29 +35,13 @@ public class Solution {
     }
 
     private Node getRandomList(Node head) {
-        Node dummyHead = new Node(-1), temp = dummyHead;
+        Node newHead = head.next;
         while (head != null) {
             Node newNode = head.next;
             head.next = newNode.next;
             head = head.next;
-            temp.next = newNode;
-            temp = temp.next;
+            newNode.next = (newNode.next != null) ? newNode.next.next : null;
         }
-        return dummyHead.next;
-    }
-
-    /**
-     * Definition for a Node.
-     */
-    static class Node {
-        int val;
-        Node next;
-        Node random;
-
-        public Node(int val) {
-            this.val = val;
-            this.next = null;
-            this.random = null;
-        }
+        return newHead;
     }
 }
