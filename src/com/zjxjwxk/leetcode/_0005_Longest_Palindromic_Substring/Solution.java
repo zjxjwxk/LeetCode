@@ -8,9 +8,8 @@ package com.zjxjwxk.leetcode._0005_Longest_Palindromic_Substring;
 public class Solution {
 
     public String longestPalindrome(String s) {
-        int n = s.length();
+        int n = s.length(), begin = 0, maxLen = 1;
         boolean[][] dp = new boolean[n][n];
-        String ans = "";
         for (int len = 1; len <= n; ++len) {
             for (int i = 0; i + len - 1 < n; ++i) {
                 int j = i + len - 1;
@@ -21,11 +20,12 @@ public class Solution {
                 } else {
                     dp[i][j] = (s.charAt(i) == s.charAt(j) && dp[i + 1][j - 1]);
                 }
-                if (dp[i][j] && len > ans.length()) {
-                    ans = s.substring(i, j + 1);
+                if (dp[i][j] && len > maxLen) {
+                    begin = i;
+                    maxLen = len;
                 }
             }
         }
-        return ans;
+        return s.substring(begin, begin + maxLen);
     }
 }

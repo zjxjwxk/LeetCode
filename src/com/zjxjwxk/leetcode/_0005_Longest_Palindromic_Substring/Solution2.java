@@ -8,26 +8,24 @@ package com.zjxjwxk.leetcode._0005_Longest_Palindromic_Substring;
 public class Solution2 {
 
     public String longestPalindrome(String s) {
-        int len = s.length();
-        String ans = "";
+        int len = s.length(), begin = 0, maxLen = 1;
         for (int i = 0; i < len; ++i) {
-            String s1 = expand(s, i, i);
-            String s2 = expand(s, i, i + 1);
-            if (s1.length() > ans.length()) {
-                ans = s1;
-            }
-            if (s2.length() > ans.length()) {
-                ans = s2;
+            int len1 = expand(s, i, i);
+            int len2 = expand(s, i, i + 1);
+            int largerLen = Math.max(len1, len2);
+            if (largerLen > maxLen) {
+                begin = i - ((largerLen - 1) >> 1);
+                maxLen = largerLen;
             }
         }
-        return ans;
+        return s.substring(begin, begin + maxLen);
     }
 
-    private String expand(String s, int left, int right) {
+    private int expand(String s, int left, int right) {
         while (left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {
             --left;
             ++right;
         }
-        return s.substring(left + 1, right);
+        return right - left - 1;
     }
 }
