@@ -11,7 +11,7 @@ class Solution3Test {
     @Test
     void longestPalindrome1() {
         String s = "babad";
-        String ans = "aba";
+        String ans = "bab";
         assertEquals(ans, solution3.longestPalindrome(s));
     }
 

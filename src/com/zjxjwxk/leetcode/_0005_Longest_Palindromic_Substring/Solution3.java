@@ -1,33 +1,34 @@
 package com.zjxjwxk.leetcode._0005_Longest_Palindromic_Substring;
 
 /**
- * 动态规划
- * 从后往前遍历
+ * 中心扩展法
+ * 时间复杂度：O(n^2)
+ * 空间复杂度：O(1)
  * @author Xinkang Wu
- * @date 2021/3/8 11:14
+ * @date 2021/3/8 13:29
  */
 public class Solution3 {
 
     public String longestPalindrome(String s) {
-        int n = s.length(), begin = 0, maxLen = 1;
-        boolean[][] dp = new boolean[n][n];
-        for (int i = n - 1; i >= 0; --i) {
-            dp[i][i] = true;
-            for (int j = i + 1; j < n; ++j) {
-                int len = j - i + 1;
-                if (s.charAt(i) == s.charAt(j)) {
-                    if (len == 2) {
-                        dp[i][j] = true;
-                    } else {
-                        dp[i][j] = dp[i + 1][j - 1];
-                    }
-                }
-                if (dp[i][j] && len > maxLen) {
-                    begin = i;
-                    maxLen = len;
-                }
+        int len = s.length(), begin = 0, maxLen = 1;
+        char[] chArr = s.toCharArray();
+        for (int i = 0; i < len; ++i) {
+            int len1 = expand(chArr, i, i);
+            int len2 = expand(chArr, i, i + 1);
+            int largerLen = Math.max(len1, len2);
+            if (largerLen > maxLen) {
+                begin = i - ((largerLen - 1) >> 1);
+                maxLen = largerLen;
             }
         }
         return s.substring(begin, begin + maxLen);
+    }
+
+    private int expand(char[] chArr, int left, int right) {
+        while (left >= 0 && right < chArr.length && chArr[left] == chArr[right]) {
+            --left;
+            ++right;
+        }
+        return right - left - 1;
     }
 }
