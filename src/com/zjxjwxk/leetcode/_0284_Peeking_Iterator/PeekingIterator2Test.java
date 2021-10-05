@@ -10,11 +10,11 @@ class PeekingIterator2Test {
     @Test
     void test() {
         List<Integer> list = Arrays.asList(1, 2, 3);
-        PeekingIterator peekingIterator = new PeekingIterator(list.iterator());
-        System.out.println(peekingIterator.next());
-        System.out.println(peekingIterator.peek());
-        System.out.println(peekingIterator.next());
-        System.out.println(peekingIterator.next());
-        System.out.println(peekingIterator.hasNext());
+        PeekingIterator2 peekingIterator2 = new PeekingIterator2(list.iterator());
+        System.out.println(peekingIterator2.next());
+        System.out.println(peekingIterator2.peek());
+        System.out.println(peekingIterator2.next());
+        System.out.println(peekingIterator2.next());
+        System.out.println(peekingIterator2.hasNext());
     }
 }
