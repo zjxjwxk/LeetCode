@@ -64,6 +64,6 @@ class SolutionTest {
         double[] ans = {0.29412, 10.948, 1.0, 1.0, -1.0, -1.0, 0.71429};
         double[] actual = solution.calcEquation(equations, values, queries);
         Double[] actualBoxed = Arrays.stream(actual).boxed().toArray(Double[]::new);
-        DSUtil.printArr(actualBoxed);
+        DSUtil.printlnArr(actualBoxed);
     }
 }

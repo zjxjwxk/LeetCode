@@ -18,7 +18,7 @@ class SolutionTest {
         List<List<Integer>> beforeItems = DSFactory.newArrayList(new Integer[][]{
                 {}, {6}, {5}, {6}, {3, 6}, {}, {}, {}
         });
-        DSUtil.printArr(Arrays.stream(solution.sortItems(n, m, group, beforeItems)).boxed().toArray(Integer[]::new));
+        DSUtil.printlnArr(Arrays.stream(solution.sortItems(n, m, group, beforeItems)).boxed().toArray(Integer[]::new));
     }
 
     @Test
@@ -28,6 +28,6 @@ class SolutionTest {
         List<List<Integer>> beforeItems = DSFactory.newArrayList(new Integer[][]{
                 {}, {6}, {5}, {6}, {3}, {}, {4}, {}
         });
-        DSUtil.printArr(Arrays.stream(solution.sortItems(n, m, group, beforeItems)).boxed().toArray(Integer[]::new));
+        DSUtil.printlnArr(Arrays.stream(solution.sortItems(n, m, group, beforeItems)).boxed().toArray(Integer[]::new));
     }
 }

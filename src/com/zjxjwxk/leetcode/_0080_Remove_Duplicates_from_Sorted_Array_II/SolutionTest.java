@@ -16,7 +16,7 @@ class SolutionTest {
         int[] nums = {1, 1, 1, 2, 2, 3};
         int len = solution.removeDuplicates(nums);
         assertEquals(5, len);
-        DSUtil.printArrByLength(Arrays.stream(nums).boxed().toArray(), len);
+        DSUtil.printlnArrByLength(Arrays.stream(nums).boxed().toArray(), len);
     }
 
     @Test
@@ -24,6 +24,6 @@ class SolutionTest {
         int[] nums = {0, 0, 1, 1, 1, 1, 2, 3, 3};
         int len = solution.removeDuplicates(nums);
         assertEquals(7, len);
-        DSUtil.printArrByLength(Arrays.stream(nums).boxed().toArray(), len);
+        DSUtil.printlnArrByLength(Arrays.stream(nums).boxed().toArray(), len);
     }
 }
