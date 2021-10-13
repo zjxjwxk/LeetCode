@@ -1,12 +1,13 @@
 package com.zjxjwxk.leetcode._0050_Pow;
 
 /**
+ * 快速幂+迭代
  * @author Xinkang Wu
  * @date 2020/8/31 1:13 上午
  */
 public class Solution {
 
-    public static double myPow(double x, int n) {
+    public double myPow(double x, int n) {
         if (x == 0) {
             return 0;
         }
@@ -24,9 +25,5 @@ public class Solution {
             b >>= 1;
         }
         return result;
-    }
-
-    public static void main(String[] args) {
-        System.out.println(myPow(2.00000, -2147483648));
     }
 }
