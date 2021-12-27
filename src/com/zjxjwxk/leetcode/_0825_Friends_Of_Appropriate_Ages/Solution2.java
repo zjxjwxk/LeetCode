@@ -17,9 +17,9 @@ public class Solution2 {
             preSum[i] = preSum[i - 1] + counts[i - 1];
         }
         int ans = 0;
-        for (int age : ages) {
-            if (age > 14) {
-                ans += preSum[age + 1] - preSum[(int) (age * 0.5 + 7) + 1] - 1;
+        for (int i = 15; i <= 120; ++i) {
+            if (counts[i] > 0) {
+                ans += counts[i] * (preSum[i + 1] - preSum[(int) (i * 0.5 + 7) + 1] - 1);
             }
         }
         return ans;
