@@ -7,24 +7,14 @@ package com.zjxjwxk.leetcode._0206_Reverse_Linked_List;
 public class Solution {
 
     public ListNode reverseList(ListNode head) {
-        if (head == null) {
-            return null;
-        }
-        ListNode pre = head;
-        if (pre.next == null) {
-            return pre;
-        }
-        ListNode cur = pre.next, next;
+        ListNode newHead = null, cur = head;
         while (cur != null) {
-            next = cur.next;
-            cur.next = pre;
-            if (pre == head) {
-                pre.next = null;
-            }
-            pre = cur;
+            ListNode next = cur.next;
+            cur.next = newHead;
+            newHead = cur;
             cur = next;
         }
-        return pre;
+        return newHead;
     }
 
     private void printLinkedList(ListNode head) {
