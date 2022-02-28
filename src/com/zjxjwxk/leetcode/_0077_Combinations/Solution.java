@@ -9,35 +9,21 @@ import java.util.List;
  */
 public class Solution {
 
-    private final List<List<Integer>> ansList = new ArrayList<>();
-    private List<Integer> temp;
-    private int n;
-
     public List<List<Integer>> combine(int n, int k) {
-        this.n = n;
-        temp = new ArrayList<>(k);
-        dfs(1, k);
-        return ansList;
+        List<List<Integer>> ans = new ArrayList<>();
+        dfs(1, n, k, new ArrayList<>(), ans);
+        return ans;
     }
 
-    private void dfs(int i, int k) {
-        if (n - i + 1 == k) {
-            for (int j = i; j <= n; ++j) {
-                temp.add(j);
-            }
-            ansList.add(new ArrayList<>(temp));
-            while (k-- != 0) {
-                temp.remove(temp.size() - 1);
-            }
+    public void dfs(int index, int n, int k, List<Integer> list, List<List<Integer>> ans) {
+        if (list.size() == k) {
+            ans.add(new ArrayList<>(list));
             return;
         }
-        if (k == 0) {
-            ansList.add(new ArrayList<>(temp));
-            return;
+        for (int i = index; i <= n && i <= n - k + 1 + list.size(); ++i) {
+            list.add(i);
+            dfs(i + 1, n, k, list, ans);
+            list.remove(list.size() - 1);
         }
-        temp.add(i);
-        dfs(i + 1, k - 1);
-        temp.remove(temp.size() - 1);
-        dfs(i + 1, k);
     }
 }
