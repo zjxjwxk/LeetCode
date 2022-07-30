@@ -12,21 +12,19 @@ public class Solution {
     public int maxSumSubmatrix(int[][] matrix, int k) {
         int m = matrix.length, n = matrix[0].length, ans = Integer.MIN_VALUE;
         for (int i = 0; i < m; ++i) {
-            int[] sums = new int[n];
+            int[] colSum = new int[n];
             for (int j = i; j < m; ++j) {
+                int preColSum = 0;
+                TreeSet<Integer> treeSet = new TreeSet<>();
+                treeSet.add(0);
                 for (int c = 0; c < n; ++c) {
-                    sums[c] += matrix[j][c];
-                }
-                TreeSet<Integer> preSumSet = new TreeSet<>();
-                int preSumRight = 0;
-                preSumSet.add(0);
-                for (int sum : sums) {
-                    preSumRight += sum;
-                    Integer preSumLeft = preSumSet.ceiling(preSumRight - k);
-                    if (preSumLeft != null) {
-                        ans = Math.max(ans, preSumRight - preSumLeft);
+                    colSum[c] += matrix[j][c];
+                    preColSum += colSum[c];
+                    Integer ceiling = treeSet.ceiling(preColSum - k);
+                    if (ceiling != null) {
+                        ans = Math.max(ans, preColSum - ceiling);
                     }
-                    preSumSet.add(preSumRight);
+                    treeSet.add(preColSum);
                 }
             }
         }
