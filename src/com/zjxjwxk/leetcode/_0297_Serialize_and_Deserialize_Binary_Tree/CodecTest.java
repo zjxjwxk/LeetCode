@@ -10,7 +10,7 @@ class CodecTest {
 
     @Test
     void deserialize() {
-        String str = "1,2,3,2147483647,2147483647,4,5,2147483647,2147483647,2147483647,2147483647";
+        String str = "1,2,3,null,null,4,5";
         Codec.TreeNode head = codec.deserialize(str);
         assertEquals(codec.serialize(head), str);
     }
