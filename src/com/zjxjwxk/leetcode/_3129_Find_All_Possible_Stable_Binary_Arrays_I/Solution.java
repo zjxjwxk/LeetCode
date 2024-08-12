@@ -24,6 +24,8 @@ public class Solution {
                 } else {
                     dp0[i][j] = dp1[i - 1][j] + dp0[i - 1][j] - dp1[i - 1 - limit][j];
                 }
+                // 因为 dp1[i - 1][j] 和 dp0[i - 1][j] 都是取余后的结果，数据可能比未取余前小很多
+                // 所以 dp1[i - 1][j] + dp0[i - 1][j] - dp1[i - 1 - limit][j] 可能为负数
                 dp0[i][j] = (dp0[i][j] % MOD + MOD) % MOD;
                 if (j <= limit) {
                     dp1[i][j] = dp0[i][j - 1] + dp1[i][j - 1];
