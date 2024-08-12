@@ -28,4 +28,11 @@ class SolutionTest {
         int ans = 14;
         assertEquals(ans, solution.numberOfStableArrays(zero, one, limit));
     }
+
+    @Test
+    void numberOfStableArrays4() {
+        int zero = 39, one = 20, limit = 18;
+        int ans = 207227572;
+        assertEquals(ans, solution.numberOfStableArrays(zero, one, limit));
+    }
 }
