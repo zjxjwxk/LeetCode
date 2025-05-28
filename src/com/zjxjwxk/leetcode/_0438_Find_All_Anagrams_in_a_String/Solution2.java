@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 优化的滑动窗口
+ * 优化的滑动窗口（根据数量不同的字母的个数）
  * @author Xinkang Wu
  * @date 2021/11/28 13:31
  */
