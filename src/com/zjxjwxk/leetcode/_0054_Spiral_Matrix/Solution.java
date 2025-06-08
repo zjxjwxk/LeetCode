@@ -11,23 +11,27 @@ import java.util.List;
 public class Solution {
 
     public List<Integer> spiralOrder(int[][] matrix) {
-        int m = matrix.length, n = matrix[0].length, total = m * n;
-        List<Integer> ans = new ArrayList<>(total);
-        for (int i = 0; i < m - i; ++i) {
-            for (int j = i; j < n - i; ++j) {
-                ans.add(matrix[i][j]);
+        if (matrix == null || matrix.length == 0) {
+            return new ArrayList<>();
+        }
+        int m = matrix.length, n = matrix[0].length;
+        List<Integer> ans = new ArrayList<>();
+        for (int i = 0; i < Math.min((m + 1) >> 1, (n + 1) >> 1); ++i) {
+            for (int col = i; col < n - i; ++col) {
+                ans.add(matrix[i][col]);
             }
-            for (int k = i + 1; k < m - i; ++k) {
-                ans.add(matrix[k][n - i - 1]);
+            for (int row = i + 1; row < m - i; ++row) {
+                ans.add(matrix[row][n - 1 - i]);
             }
-            for (int j = n - i - 2; j >= i && m - i - 1 != i; --j) {
-                ans.add(matrix[m - i - 1][j]);
+            if (i < (m - 1 - i)) {
+                for (int col = n - 2 - i; col > i; --col) {
+                    ans.add(matrix[m - 1 - i][col]);
+                }
             }
-            for (int k = m - i - 2; k >= i + 1 && i != n - i - 1; --k) {
-                ans.add(matrix[k][i]);
-            }
-            if (ans.size() == total) {
-                return ans;
+            if (i < (n - 1 - i)) {
+                for (int row = m - 1 - i; row > i; --row) {
+                    ans.add(matrix[row][i]);
+                }
             }
         }
         return ans;
