@@ -3,7 +3,8 @@ package com.zjxjwxk.leetcode._0230_Kth_Smallest_Element_in_a_BST;
 import com.zjxjwxk.leetcode.util.TreeNode;
 
 /**
- * 中序遍历
+ * 中序遍历（递归）
+ *
  * @author Xinkang Wu
  * @date 2021/10/17 15:01
  */
