@@ -1,39 +1,35 @@
 package com.zjxjwxk.leetcode._0020_Valid_Parentheses;
 
-import java.util.Stack;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author zjxjwxk
  */
 public class Solution {
-    public boolean isValid(String s) {
 
-        Stack<Character> stack = new Stack<>();
-        for (int i = 0; i < s.length(); i++) {
-            char c = s.charAt(i);
-            if (c == '(' || c == '[' || c == '{') {
-                stack.push(c);
+    public boolean isValid(String s) {
+        if (s == null || s.isEmpty() || ((s.length() & 1) == 1)) {
+            return false;
+        }
+        int len = s.length(), top = -1;
+        Map<Character, Character> bracketMap = new HashMap<Character, Character>(){{
+            put('(', ')');
+            put('[', ']');
+            put('{', '}');
+        }};
+        char[] stack = new char[len];
+        for (int i = 0; i < len; ++i) {
+            char ch = s.charAt(i);
+            if (bracketMap.containsKey(ch)) {
+                stack[++top] = ch;
             } else {
-                if (stack.isEmpty()) {
+                if (top == -1 || bracketMap.get(stack[top]) != ch) {
                     return false;
                 }
-                char topChar = stack.pop();
-                if (c == ')' && topChar != '(') {
-                    return false;
-                }
-                if (c == ']' && topChar != '[') {
-                    return false;
-                }
-                if (c == '}' && topChar != '{') {
-                    return false;
-                }
+                --top;
             }
         }
-        return stack.isEmpty();
-    }
-
-    public static void main(String[] args) {
-        System.out.println(new Solution().isValid("()[]{}"));
-        System.out.println(new Solution().isValid("([)]"));
+        return top == -1;
     }
 }
