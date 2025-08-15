@@ -4,43 +4,44 @@ import java.util.PriorityQueue;
 import java.util.Queue;
 
 /**
+ * 最大堆+最小堆
+ * 时间复杂度：
+ *  addNum：O(logn)
+ *  findMedian：O(1)
+ * 空间复杂度：O(n)
+ *
  * @author Xinkang Wu
  * @date 2020/10/19 2:19 下午
  */
 public class MedianFinder {
 
-    private final Queue<Integer> minHeap;
     private final Queue<Integer> maxHeap;
-    /** initialize your data structure here. */
+    private final Queue<Integer> minHeap;
 
     public MedianFinder() {
-        minHeap = new PriorityQueue<>();
-        maxHeap = new PriorityQueue<>((o1, o2) -> o2 - o1);
+        this.maxHeap = new PriorityQueue<>((num1, num2) -> num2 - num1);
+        this.minHeap = new PriorityQueue<>();
     }
 
     public void addNum(int num) {
-        if (maxHeap.size() == 0) {
-            maxHeap.add(num);
-        } else {
-            if (num < maxHeap.peek()) {
-                maxHeap.add(num);
-            } else {
-                minHeap.add(num);
+        if (this.maxHeap.isEmpty() || num <= this.maxHeap.peek()) {
+            this.maxHeap.offer(num);
+            if (this.maxHeap.size() > this.minHeap.size() + 1) {
+                this.minHeap.offer(this.maxHeap.poll());
             }
-        }
-        int difference = maxHeap.size() - minHeap.size();
-        if (difference > 1) {
-            minHeap.add(maxHeap.poll());
-        } else if (difference < 0) {
-            maxHeap.add(minHeap.poll());
+        } else {
+            this.minHeap.offer(num);
+            if (this.minHeap.size() > this.maxHeap.size()) {
+                this.maxHeap.offer(this.minHeap.poll());
+            }
         }
     }
 
     public double findMedian() {
-        if (maxHeap.size() == minHeap.size()) {
-            return (maxHeap.peek() + minHeap.peek()) / 2.0;
+        if (this.maxHeap.size() == this.minHeap.size()) {
+            return ((double) (this.maxHeap.peek() + this.minHeap.peek())) / 2;
         } else {
-            return maxHeap.peek();
+            return this.maxHeap.peek();
         }
     }
 }
