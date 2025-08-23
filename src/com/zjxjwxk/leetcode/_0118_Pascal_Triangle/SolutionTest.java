@@ -21,4 +21,11 @@ class SolutionTest {
         };
         assertEquals(DSFactory.newArrayList(ans), solution.generate(numRows));
     }
+
+    @Test
+    void generate2() {
+        int numRows = 1;
+        Integer[][] ans = {{1}};
+        assertEquals(DSFactory.newArrayList(ans), solution.generate(numRows));
+    }
 }

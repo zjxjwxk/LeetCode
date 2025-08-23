@@ -10,23 +10,18 @@ import java.util.List;
 public class Solution {
 
     public List<List<Integer>> generate(int numRows) {
-        if (numRows == 0) {
-            return new ArrayList<>();
-        }
         List<List<Integer>> ans = new ArrayList<>();
-        List<Integer> firstLayer = new ArrayList<>();
-        List<Integer> preLayer = firstLayer;
-        firstLayer.add(1);
-        ans.add(firstLayer);
-        for (int i = 1; i < numRows; ++i) {
-            List<Integer> layer = new ArrayList<>();
-            layer.add(1);
-            for (int j = 0; j < preLayer.size() - 1; ++j) {
-                layer.add(preLayer.get(j) + preLayer.get(j + 1));
+        for (int i = 1; i <= numRows; ++i) {
+            List<Integer> row = new ArrayList<>();
+            for (int j = 1; j <= i; ++j) {
+                if (j == 1 || j == i) {
+                    row.add(1);
+                } else {
+                    List<Integer> preRow = ans.get(ans.size() - 1);
+                    row.add(preRow.get(j - 2) + preRow.get(j - 1));
+                }
             }
-            layer.add(1);
-            ans.add(layer);
-            preLayer = layer;
+            ans.add(row);
         }
         return ans;
     }
