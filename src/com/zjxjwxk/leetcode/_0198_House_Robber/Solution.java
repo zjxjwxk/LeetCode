@@ -8,13 +8,13 @@ package com.zjxjwxk.leetcode._0198_House_Robber;
 public class Solution {
 
     public int rob(int[] nums) {
-        int dp1 = 0, dp2 = nums[0];
-        for (int i = 1; i < nums.length; ++i) {
-            int temp1 = Math.max(dp1, dp2);
-            int temp2 = dp1 + nums[i];
-            dp1 = temp1;
-            dp2 = temp2;
+        int dp1 = 0, dp2 = 0, dp3 = 0;
+        for (int num : nums) {
+            int max = Math.max(dp1, dp2) + num;
+            dp1 = dp2;
+            dp2 = dp3;
+            dp3 = max;
         }
-        return Math.max(dp1, dp2);
+        return Math.max(dp2, dp3);
     }
 }
