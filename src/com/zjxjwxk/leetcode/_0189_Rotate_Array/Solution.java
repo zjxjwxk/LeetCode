@@ -6,28 +6,22 @@ package com.zjxjwxk.leetcode._0189_Rotate_Array;
  * @date 2021/1/8 10:38
  */
 public class Solution {
-
     public void rotate(int[] nums, int k) {
-        int len = nums.length;
-        if (len == 0) {
-            return;
-        }
-        k %= len;
-        reverse(nums, 0, len - k - 1);
-        reverse(nums, len - k, len - 1);
-        reverse(nums, 0, len - 1);
+        k %= nums.length;
+        reverse(nums, 0, nums.length - 1 - k);
+        reverse(nums, nums.length - k, nums.length - 1);
+        reverse(nums, 0, nums.length - 1);
     }
 
     private void reverse(int[] nums, int left, int right) {
-        int i = left, j = right;
-        while (i < j) {
-            swap(nums, i++, j--);
+        while (left < right) {
+            swap(nums, left++, right--);
         }
     }
 
-    private void swap(int[] nums, int i, int j) {
-        int temp = nums[i];
-        nums[i] = nums[j];
-        nums[j] = temp;
+    private void swap(int[] nums, int index1, int index2) {
+        int temp = nums[index1];
+        nums[index1] = nums[index2];
+        nums[index2] = temp;
     }
 }
