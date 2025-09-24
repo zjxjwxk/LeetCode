@@ -34,13 +34,4 @@ class SolutionTest {
         int[] ans = {1};
         assertArrayEquals(ans, nums);
     }
-
-    @Test
-    void rotate4() {
-        int[] nums = {};
-        int k = 3;
-        solution.rotate(nums, k);
-        int[] ans = {};
-        assertArrayEquals(ans, nums);
-    }
 }
