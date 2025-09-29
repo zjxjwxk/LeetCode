@@ -8,16 +8,17 @@ package com.zjxjwxk.leetcode._0274_H_Index;
 public class Solution2 {
 
     public int hIndex(int[] citations) {
-        int len = citations.length, ans = 0;
-        int[] counts = new int[len + 1];
+        int n = citations.length, count = 0;
+        int[] counts = new int[n + 1];
         for (int citation : citations) {
-            ++counts[Math.min(citation, len)];
+            ++counts[Math.min(citation, n)];
         }
-        for (int i = len; i >= 0 && ans <= i; --i) {
-            if (counts[i] > 0) {
-                ans = Math.min(ans + counts[i], i);
+        for (int citation = n; citation >= 1; --citation) {
+            count += counts[citation];
+            if (count >= citation) {
+                return citation;
             }
         }
-        return ans;
+        return 0;
     }
 }
