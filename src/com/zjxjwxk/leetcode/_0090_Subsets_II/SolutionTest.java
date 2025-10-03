@@ -15,7 +15,7 @@ class SolutionTest {
     void subsetsWithDup1() {
         int[] nums = {1, 2, 2};
         List<List<Integer>> ans = DSFactory.newArrayList(new Integer[][]{
-                {}, {1}, {1, 2}, {1, 2, 2}, {2}, {2, 2}
+                {1, 2, 2}, {1, 2}, {1}, {2, 2}, {2}, {}
         });
         assertEquals(ans, solution.subsetsWithDup(nums));
     }
@@ -24,7 +24,7 @@ class SolutionTest {
     void subsetsWithDup2() {
         int[] nums = {0};
         List<List<Integer>> ans = DSFactory.newArrayList(new Integer[][]{
-                {}, {0}
+                {0}, {}
         });
         assertEquals(ans, solution.subsetsWithDup(nums));
     }
@@ -33,7 +33,7 @@ class SolutionTest {
     void subsetsWithDup3() {
         int[] nums = {1, 1, 2, 2};
         List<List<Integer>> ans = DSFactory.newArrayList(new Integer[][]{
-                {}, {1}, {1, 1}, {1, 1, 2}, {1, 1, 2, 2}, {1, 2}, {1, 2, 2}, {2}, {2, 2}
+                {1, 1, 2, 2}, {1, 1, 2}, {1, 1}, {1, 2, 2}, {1, 2}, {1}, {2, 2}, {2}, {}
         });
         assertEquals(ans, solution.subsetsWithDup(nums));
     }

@@ -13,10 +13,10 @@ class RandomizedCollectionTest {
         boolean result = collection.insert(0);
         assertTrue(result);
         result = collection.remove(0);
-        assertFalse(result);
+        assertTrue(result);
         result = collection.insert(-1);
         assertTrue(result);
         result = collection.remove(0);
-        assertTrue(result);
+        assertFalse(result);
     }
 }

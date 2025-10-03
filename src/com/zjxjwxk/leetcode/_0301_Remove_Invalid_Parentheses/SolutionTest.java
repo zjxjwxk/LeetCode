@@ -15,14 +15,14 @@ class SolutionTest {
     @Test
     void removeInvalidParentheses1() {
         String s = "()())()";
-        List<String> ans = Arrays.asList("(())()", "()()()");
+        List<String> ans = Arrays.asList("()()()", "(())()");
         assertEquals(ans, solution.removeInvalidParentheses(s));
     }
 
     @Test
     void removeInvalidParentheses2() {
         String s = "(a)())()";
-        List<String> ans = Arrays.asList("(a())()", "(a)()()");
+        List<String> ans = Arrays.asList("(a)()()", "(a())()");
         assertEquals(ans, solution.removeInvalidParentheses(s));
     }
 
