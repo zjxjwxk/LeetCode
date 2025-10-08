@@ -5,7 +5,7 @@ package com.zjxjwxk.leetcode._0014_Longest_Common_Prefix;
  */
 public class Solution {
 
-    public static String longestCommonPrefix(String[] strs) {
+    public String longestCommonPrefix(String[] strs) {
         int len = strs.length;
         if (len == 0) {
             return "";
@@ -25,11 +25,5 @@ public class Solution {
             prefix = temp.toString();
         }
         return prefix;
-    }
-
-    public static void main(String[] args) {
-        String[] strs = {"flower", "flow", "flight"};
-        String prefix = longestCommonPrefix(strs);
-        System.out.println(prefix);
     }
 }
