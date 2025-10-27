@@ -1,6 +1,10 @@
 package com.zjxjwxk.leetcode._0141_Linked_List_Cycle;
 
+import com.zjxjwxk.leetcode.util.ListNode;
+
 /**
+ * 快慢指针
+ *
  * @author zjxjwxk
  * @date 2020/10/9 2:10 下午
  */
@@ -19,14 +23,5 @@ public class Solution {
             }
         }
         return false;
-    }
-
-    static class ListNode {
-        int val;
-        ListNode next;
-        ListNode(int x) {
-            val = x;
-            next = null;
-        }
     }
 }
