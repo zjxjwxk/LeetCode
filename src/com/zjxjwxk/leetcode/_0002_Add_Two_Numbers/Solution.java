@@ -1,15 +1,10 @@
 package com.zjxjwxk.leetcode._0002_Add_Two_Numbers;
 
-class ListNode {
-    int val;
-    ListNode next;
-
-    ListNode(int x) {
-        val = x;
-    }
-}
+import com.zjxjwxk.leetcode.util.ListNode;
 
 /**
+ * 模拟
+ *
  * @author zjxjwxk
  */
 public class Solution {
