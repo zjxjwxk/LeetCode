@@ -10,18 +10,15 @@ import com.zjxjwxk.leetcode.util.ListNode;
 public class Solution {
 
     public ListNode deleteDuplicates(ListNode head) {
-        ListNode dummyHead = new ListNode();
-        dummyHead.next = head;
-        ListNode p = dummyHead;
+        ListNode dummyHead = new ListNode(0, head), p = dummyHead;
         while (p.next != null && p.next.next != null) {
-            ListNode temp = p.next, q = temp;
-            while (q.next != null && q.next.val == q.val) {
-                q = q.next;
-            }
-            if (q == temp) {
-                p = p.next;
+            if (p.next.val == p.next.next.val) {
+                int val = p.next.val;
+                while (p.next != null && p.next.val == val) {
+                    p.next = p.next.next;
+                }
             } else {
-                p.next = q.next;
+                p = p.next;
             }
         }
         return dummyHead.next;
