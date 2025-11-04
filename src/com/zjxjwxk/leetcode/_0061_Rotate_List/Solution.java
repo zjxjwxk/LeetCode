@@ -3,7 +3,8 @@ package com.zjxjwxk.leetcode._0061_Rotate_List;
 import com.zjxjwxk.leetcode.util.ListNode;
 
 /**
- * 快慢指针
+ * 找倒数第k个节点
+ *
  * @author Xinkang Wu
  * @date 2021/3/27 00:55
  */
