@@ -5,11 +5,11 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class SolutionTest {
+class Solution2Test {
 
-    private final Solution solution = new Solution();
+    private final Solution2 solution2 = new Solution2();
 
     @Test
     void combine() {
@@ -22,6 +22,6 @@ class SolutionTest {
                 {2, 4},
                 {3, 4}
         });
-        assertEquals(ans, solution.combine(n, k));
+        assertEquals(ans, solution2.combine(n, k));
     }
 }
