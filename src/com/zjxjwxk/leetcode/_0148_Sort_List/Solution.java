@@ -3,66 +3,67 @@ package com.zjxjwxk.leetcode._0148_Sort_List;
 import com.zjxjwxk.leetcode.util.ListNode;
 
 /**
- * 归并排序
+ * 自底向上归并排序
+ *
  * @author Xinkang Wu
  * @date 2020/11/21 11:01
  */
 public class Solution {
 
     public ListNode sortList(ListNode head) {
-        int len = 0;
-        ListNode temp = head;
-        while (temp != null) {
-            ++len;
-            temp = temp.next;
+        int count = 0;
+        ListNode dummyHead = new ListNode(0, head), p = head;
+        while (p != null) {
+            ++count;
+            p = p.next;
         }
-        ListNode dummyHead = new ListNode();
-        dummyHead.next = head;
-        for (int subLength = 1; subLength < len; subLength <<= 1) {
-            ListNode pre = dummyHead, head1, head2, cur = pre.next, nextHead;
-            while (cur != null && cur.next != null) {
-                head1 = cur;
-                for (int i = 0; i < subLength - 1 && cur.next != null; ++i) {
-                    cur = cur.next;
+        for (int len = 1; len < count; len <<= 1) {
+            p = dummyHead;
+            ListNode preTail = dummyHead, next = null;
+            while (p.next != null) {
+                ListNode list1 = p.next;
+                for (int i = 0; i < len && p.next != null; ++i) {
+                    p = p.next;
                 }
-                if (cur.next != null) {
-                    head2 = cur.next;
-                    cur.next = null;
-                    cur = head2;
-                    for (int i = 0; i < subLength - 1 && cur.next != null; ++i) {
-                        cur = cur.next;
-                    }
-                    nextHead = cur.next;
-                    cur.next = null;
-                    pre.next = merge(head1, head2);
-                    while (pre.next != null) {
-                        pre = pre.next;
-                    }
-                    pre.next = nextHead;
-                    cur = nextHead;
+                if (p.next == null) {
+                    break;
                 }
+                ListNode list2 = p.next;
+                p.next = null;
+                p = list2;
+                for (int i = 0; i < len - 1 && p.next != null; ++i) {
+                    p = p.next;
+                }
+                next = p.next;
+                p.next = null;
+                ListNode newHead = mergeList(list1, list2);
+                preTail.next = newHead;
+                while (preTail.next != null) {
+                    preTail = preTail.next;
+                }
+                preTail.next = next;
+                p = preTail;
             }
         }
         return dummyHead.next;
     }
 
-    private ListNode merge(ListNode head1, ListNode head2) {
-        ListNode dummyHead = new ListNode(), pre = dummyHead;
-        while (head1 != null && head2 != null) {
-            if (head1.val < head2.val) {
-                pre.next = head1;
-                head1 = head1.next;
+    private ListNode mergeList(ListNode head1, ListNode head2) {
+        ListNode p1 = head1, p2 = head2, dummyHead = new ListNode(), tail = dummyHead;
+        while (p1 != null && p2 != null) {
+            if (p1.val <= p2.val) {
+                tail.next = p1;
+                p1 = p1.next;
             } else {
-                pre.next = head2;
-                head2 = head2.next;
+                tail.next = p2;
+                p2 = p2.next;
             }
-            pre = pre.next;
+            tail = tail.next;
         }
-        if (head1 != null) {
-            pre.next = head1;
-        }
-        if (head2 != null) {
-            pre.next = head2;
+        if (p1 != null) {
+            tail.next = p1;
+        } else {
+            tail.next = p2;
         }
         return dummyHead.next;
     }
