@@ -1,33 +1,42 @@
 package com.zjxjwxk.leetcode._0150_Evaluate_Reverse_Polish_Notation;
 
+import java.util.*;
+
 /**
  * 栈
+ *
  * @author Xinkang Wu
  * @date 2021/3/20 11:16
  */
 public class Solution {
 
     public int evalRPN(String[] tokens) {
-        int len = tokens.length, numIndex = -1;
-        int[] numStack = new int[(len + 1) >> 1];
+        Deque<Integer> stack = new LinkedList<>();
+        Set<String> operatorSet = new HashSet<>(Arrays.asList("+", "-", "*", "/"));
         for (String token : tokens) {
-            char ch = token.charAt(0);
-            if (token.length() != 1 || (ch >= '0' && ch <= '9')) {
-                numStack[++numIndex] = Integer.parseInt(token);
-            } else {
-                int num2 = numStack[numIndex--];
-                int num1 = numStack[numIndex--];
-                if (ch == '+') {
-                    numStack[++numIndex] = num1 + num2;
-                } else if (ch == '-') {
-                    numStack[++numIndex] = num1 - num2;
-                } else if (ch == '*') {
-                    numStack[++numIndex] = num1 * num2;
-                } else if (ch == '/') {
-                    numStack[++numIndex] = num1 / num2;
+            if (operatorSet.contains(token)) {
+                int num2 = stack.pop();
+                int num1 = stack.pop();
+                int result = 0;
+                switch (token) {
+                    case "+":
+                        result = num1 + num2;
+                        break;
+                    case "-":
+                        result = num1 - num2;
+                        break;
+                    case "*":
+                        result = num1 * num2;
+                        break;
+                    case "/":
+                        result = num1 / num2;
+                        break;
                 }
+                stack.push(result);
+            } else {
+                stack.push(Integer.parseInt(token));
             }
         }
-        return numStack[numIndex];
+        return stack.pop();
     }
 }
