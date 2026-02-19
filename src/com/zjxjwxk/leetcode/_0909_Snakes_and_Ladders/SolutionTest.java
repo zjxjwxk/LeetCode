@@ -21,4 +21,17 @@ class SolutionTest {
         int ans = 4;
         assertEquals(ans, solution.snakesAndLadders(board));
     }
+
+    @Test
+    void snakesAndLadders2() {
+        int[][] board = {
+                {-1, 10, -1, 15, -1},
+                {-1, -1, 18, 2, 20},
+                {-1, -1, 12, -1, -1},
+                {2, 4, 11, 18, 8},
+                {-1, -1, -1, -1, -1}
+        };
+        int ans = 3;
+        assertEquals(ans, solution.snakesAndLadders(board));
+    }
 }

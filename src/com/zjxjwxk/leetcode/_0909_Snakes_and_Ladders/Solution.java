@@ -3,53 +3,58 @@ package com.zjxjwxk.leetcode._0909_Snakes_and_Ladders;
 import java.util.*;
 
 /**
- * 广度优先搜索
+ * 广度优先搜索（剪枝）
  * @author Xinkang Wu
  * @date 2021/6/27 21:08
  */
 public class Solution {
 
     public int snakesAndLadders(int[][] board) {
-        int len = board.length;
+        int n = board.length, count = 0;
+        boolean[] vis = new boolean[n * n + 1];
         Queue<Integer> queue = new LinkedList<>();
         queue.offer(1);
-        Set<Integer> visitedSet = new HashSet<>();
-        visitedSet.add(1);
-        int step = 0;
         while (!queue.isEmpty()) {
-            ++step;
             int size = queue.size();
+            ++count;
             for (int i = 0; i < size; ++i) {
-                for (Integer num : getNextLevel(queue.poll(), board)) {
-                    if (!visitedSet.contains(num)) {
-                        if (num == len * len) {
-                            return step;
-                        }
-                        queue.offer(num);
-                        visitedSet.add(num);
+                int id = queue.poll();
+                int maxNormalNextId = -1;
+                for (int step = 1; step <= 6; ++step) {
+                    int nextId = id + step;
+                    if (nextId > n * n) {
+                        break;
                     }
+                    int[] pos = getPosition(nextId, n);
+                    int row = pos[0], col = pos[1];
+                    if (board[row][col] != -1) {
+                        nextId = board[row][col];
+                    }
+                    if (nextId == n * n) {
+                        return count;
+                    }
+                    if (!vis[nextId]) {
+                        vis[nextId] = true;
+                        if (board[row][col] != -1) {
+                            queue.offer(nextId);
+                        } else {
+                            maxNormalNextId = Math.max(maxNormalNextId, nextId);
+                        }
+                    }
+                }
+                if (maxNormalNextId != -1) {
+                    queue.offer(maxNormalNextId);
                 }
             }
         }
         return -1;
     }
 
-    private List<Integer> getNextLevel(int cur, int[][] board) {
-        int len = board.length, max = -1;
-        List<Integer> nextLevel = new ArrayList<>(6);
-        for (int i = cur + 1; i <= cur + 6 && i <= len * len; ++i) {
-            int r = (i - 1) / len, c = (i - 1) % len;
-            int row = len - 1 - r;
-            int col = (r & 1) == 0 ? c : (len - 1 - c);
-            if (board[row][col] != -1) {
-                nextLevel.add(board[row][col]);
-            } else {
-                max = Math.max(max, i);
-            }
+    private int[] getPosition(int id, int n) {
+        int row = (id - 1) / n, col = (id - 1) % n;
+        if ((row & 1) == 1) {
+            col = n - 1 - col;
         }
-        if (max != -1) {
-            nextLevel.add(max);
-        }
-        return nextLevel;
+        return new int[]{n - 1 - row, col};
     }
 }
